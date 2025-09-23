@@ -1,7 +1,7 @@
 package model
 
 data class Usuario(
-    val id: Int,
+    val id: String,
     val nombre: String,
     val email: String
 )

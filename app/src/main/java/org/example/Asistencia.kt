@@ -1,6 +1,6 @@
 package model
 
 data class Asistencia(
-    val usuarioId: Int,
-    val eventoId: Int
+    val usuarioId: String,
+    val eventoId: String
 )

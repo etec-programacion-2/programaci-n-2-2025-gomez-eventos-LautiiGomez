@@ -4,13 +4,14 @@ import model.Usuario
 import model.Evento
 import model.Asistencia
 import java.time.LocalDateTime
+import java.util.UUID
 
 fun main() {
-    val usuario1 = Usuario(id = 1, nombre = "Ana Gómez", email = "ana@gmail.com")
-    val usuario2 = Usuario(id = 2, nombre = "Luis Pérez", email = "luis@gmail.com")
+    val usuario1 = Usuario(id = UUID.randomUUID().toString(), nombre = "Ana Gómez", email = "ana@gmail.com")
+    val usuario2 = Usuario(id = UUID.randomUUID().toString(), nombre = "Luis Pérez", email = "luis@gmail.com")
 
     val evento1 = Evento(
-        id = 1,
+        id = UUID.randomUUID().toString(),
         nombre = "Feria de Tecnología",
         descripcion = "Evento con charlas y exposiciones de tecnología.",
         fecha = LocalDateTime.of(2025, 9, 15, 18, 0),
