@@ -43,3 +43,8 @@ application {
     // Define the main class for the application.
     mainClass = "org.example.AppKt"
 }
+
+// Configurar para permitir entrada interactiva
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
