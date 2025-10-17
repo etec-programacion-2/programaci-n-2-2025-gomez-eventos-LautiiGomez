@@ -2,6 +2,8 @@ package org.example
 
 import service.IUsuarioService
 import service.IEventoService
+import view.EventoView
+import view.UsuarioView
 import model.Usuario
 import model.Evento
 import java.time.LocalDateTime
@@ -14,6 +16,8 @@ class CliController(
     private val eventoService: IEventoService
 ) {
     private val scanner = Scanner(System.`in`)
+    private val eventoView = EventoView()
+    private val usuarioView = UsuarioView()
     private var usuarioActual: Usuario? = null
 
     fun iniciar() {
