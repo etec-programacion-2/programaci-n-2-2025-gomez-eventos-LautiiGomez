@@ -85,7 +85,7 @@ class CliController(
         val email = scanner.nextLine().trim()
 
         if (nombre.isBlank() || email.isBlank()) {
-            println("Error: El nombre y el email son obligatorios.")
+            usuarioView.mostrarMensajeError("El nombre y el email son obligatorios.")
             return
         }
 
@@ -98,17 +98,14 @@ class CliController(
         val usuarioRegistrado = usuarioService.registrarUsuario(usuario)
         usuarioActual = usuarioRegistrado
 
-        println("\n✓ Usuario registrado exitosamente!")
-        println("ID: ${usuarioRegistrado.id}")
-        println("Nombre: ${usuarioRegistrado.nombre}")
-        println("Email: ${usuarioRegistrado.email}")
+        usuarioView.mostrarUsuarioRegistrado(usuarioRegistrado)
     }
 
     private fun crearEvento() {
         println("\n=== Crear Evento ===")
 
         if (usuarioActual == null) {
-            println("Error: Debe registrarse primero para crear eventos.")
+            eventoView.mostrarMensajeError("Debe registrarse primero para crear eventos.")
             return
         }
 
@@ -125,14 +122,14 @@ class CliController(
         val ubicacion = scanner.nextLine().trim()
 
         if (nombre.isBlank() || descripcion.isBlank() || fechaStr.isBlank() || ubicacion.isBlank()) {
-            println("Error: Todos los campos son obligatorios.")
+            eventoView.mostrarMensajeError("Todos los campos son obligatorios.")
             return
         }
 
         val fecha = try {
             LocalDateTime.parse(fechaStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
         } catch (e: DateTimeParseException) {
-            println("Error: Formato de fecha inválido. Use dd/MM/yyyy HH:mm")
+            eventoView.mostrarMensajeError("Formato de fecha inválido. Use dd/MM/yyyy HH:mm")
             return
         }
 
@@ -146,70 +143,45 @@ class CliController(
         )
 
         val eventoCreado = eventoService.crearEvento(evento)
-
-        println("\n✓ Evento creado exitosamente!")
-        println("ID: ${eventoCreado.id}")
-        println("Nombre: ${eventoCreado.nombre}")
-        println("Fecha: ${eventoCreado.fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))}")
-        println("Ubicación: ${eventoCreado.ubicacion}")
+        eventoView.mostrarEventoCreado(eventoCreado)
     }
 
     private fun listarEventos() {
         println("\n=== Lista de Eventos ===")
-
         val eventos = eventoService.obtenerEventos()
-
-        if (eventos.isEmpty()) {
-            println("No hay eventos registrados.")
-            return
-        }
-
-        eventos.forEachIndexed { index, evento ->
-            println("\n--- Evento ${index + 1} ---")
-            println("ID: ${evento.id}")
-            println("Nombre: ${evento.nombre}")
-            println("Descripción: ${evento.descripcion}")
-            println("Fecha: ${evento.fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))}")
-            println("Ubicación: ${evento.ubicacion}")
-            println("Creador ID: ${evento.creadorId}")
-        }
-
-        println("\nTotal de eventos: ${eventos.size}")
+        eventoView.mostrarEventos(eventos)
     }
 
     private fun confirmarAsistencia() {
         println("\n=== Confirmar Asistencia ===")
 
         if (usuarioActual == null) {
-            println("Error: Debe registrarse primero para confirmar asistencia.")
+            eventoView.mostrarMensajeError("Debe registrarse primero para confirmar asistencia.")
             return
         }
 
         val eventos = eventoService.obtenerEventos()
         if (eventos.isEmpty()) {
-            println("No hay eventos disponibles.")
+            eventoView.mostrarMensajeError("No hay eventos disponibles.")
             return
         }
 
-        println("\nEventos disponibles:")
-        eventos.forEachIndexed { index, evento ->
-            println("${index + 1}. ${evento.nombre} - ${evento.fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))}")
-        }
+        eventoView.mostrarEventosDisponibles(eventos)
 
         print("\nIngrese el ID del evento: ")
         val eventoId = scanner.nextLine().trim()
 
         if (eventoId.isBlank()) {
-            println("Error: Debe ingresar un ID de evento.")
+            eventoView.mostrarMensajeError("Debe ingresar un ID de evento.")
             return
         }
 
         val resultado = eventoService.confirmarAsistencia(usuarioActual!!.id, eventoId)
 
         if (resultado) {
-            println("\n✓ Asistencia confirmada exitosamente!")
+            eventoView.mostrarMensajeExito("Asistencia confirmada exitosamente!")
         } else {
-            println("\nError: No se pudo confirmar la asistencia. Verifique que el evento exista y no haya confirmado previamente.")
+            eventoView.mostrarMensajeError("No se pudo confirmar la asistencia. Verifique que el evento exista y no haya confirmado previamente.")
         }
     }
 }

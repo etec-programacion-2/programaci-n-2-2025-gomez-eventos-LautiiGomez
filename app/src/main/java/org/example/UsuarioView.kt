@@ -6,7 +6,7 @@ class UsuarioView {
 
     fun mostrarUsuarioRegistrado(usuario: Usuario) {
         println("\n╔════════════════════════════════════════════════════════════════════════════╗")
-        println("║                  ✓ USUARIO REGISTRADO EXITOSAMENTE                        ║")
+        println("║                  ✓ USUARIO REGISTRADO EXITOSAMENTE                         ║")
         println("╚════════════════════════════════════════════════════════════════════════════╝")
         println("\n┌─── Datos del Usuario ${"─".repeat(56)}")
         println("│ ID: ${usuario.id}")

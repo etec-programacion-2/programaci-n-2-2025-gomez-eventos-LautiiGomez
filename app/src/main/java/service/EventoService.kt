@@ -2,27 +2,27 @@ package service
 
 import model.Evento
 import model.Asistencia
-import java.util.UUID
+import repository.IEventoRepository
 
-class EventoService : IEventoService {
-    private val eventos = mutableListOf<Evento>()
-    private val asistencias = mutableListOf<Asistencia>()
+class EventoService(
+    private val eventoRepository: IEventoRepository
+) : IEventoService {
 
     override fun crearEvento(evento: Evento): Evento {
-        val nuevoEvento = evento.copy(id = UUID.randomUUID().toString())
-        eventos.add(nuevoEvento)
-        return nuevoEvento
+        return eventoRepository.guardar(evento)
     }
 
     override fun obtenerEventos(): List<Evento> {
-        return eventos.toList()
+        return eventoRepository.obtenerTodos()
     }
 
     override fun confirmarAsistencia(usuarioId: String, eventoId: String): Boolean {
-        val eventoExiste = eventos.any { it.id == eventoId }
+        // Verificar que el evento exista
+        val eventoExiste = eventoRepository.obtenerPorId(eventoId) != null
         if (!eventoExiste) return false
-        if (asistencias.any { it.usuarioId == usuarioId && it.eventoId == eventoId }) return false
-        asistencias.add(Asistencia(usuarioId, eventoId))
-        return true
+
+        // Intentar guardar la asistencia
+        val asistencia = Asistencia(usuarioId, eventoId)
+        return eventoRepository.guardarAsistencia(asistencia)
     }
 }

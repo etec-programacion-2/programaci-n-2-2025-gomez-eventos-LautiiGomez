@@ -1,18 +1,17 @@
 package service
 
 import model.Usuario
-import java.util.UUID
+import repository.IUsuarioRepository
 
-class UsuarioService : IUsuarioService {
-    private val usuarios = mutableListOf<Usuario>()
+class UsuarioService(
+    private val usuarioRepository: IUsuarioRepository
+) : IUsuarioService {
 
     override fun registrarUsuario(usuario: Usuario): Usuario {
-        val nuevoUsuario = usuario.copy(id = UUID.randomUUID().toString())
-        usuarios.add(nuevoUsuario)
-        return nuevoUsuario
+        return usuarioRepository.guardar(usuario)
     }
 
     override fun obtenerUsuario(id: String): Usuario? {
-        return usuarios.find { it.id == id }
+        return usuarioRepository.obtenerPorId(id)
     }
 }
