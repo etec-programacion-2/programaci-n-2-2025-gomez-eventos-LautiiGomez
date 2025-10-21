@@ -12,6 +12,9 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    // Gson para serialización/deserialización JSON
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 testing {
