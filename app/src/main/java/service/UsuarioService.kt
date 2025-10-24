@@ -14,4 +14,8 @@ class UsuarioService(
     override fun obtenerUsuario(id: String): Usuario? {
         return usuarioRepository.obtenerPorId(id)
     }
+
+    override fun iniciarSesion(email: String): Usuario? {
+        return usuarioRepository.obtenerPorEmail(email)
+    }
 }

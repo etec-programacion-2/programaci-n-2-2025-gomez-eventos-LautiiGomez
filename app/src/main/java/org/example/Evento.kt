@@ -8,5 +8,13 @@ data class Evento(
     val descripcion: String,
     val fecha: LocalDateTime,
     val ubicacion: String,
-    val creadorId: String
+    val creadorId: String,
+    val categoria: String,
+    val tipoEntrada: TipoEntrada,
+    val precioEntrada: Double = 0.0
 )
+
+enum class TipoEntrada {
+    GRATIS,
+    PAGO
+}

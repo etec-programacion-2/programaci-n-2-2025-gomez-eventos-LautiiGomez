@@ -69,6 +69,10 @@ class UsuarioRepositoryJson(
         return usuarios.find { it.id == id }
     }
 
+    override fun obtenerPorEmail(email: String): Usuario? {
+        return usuarios.find { it.email == email }
+    }
+
     override fun existePorEmail(email: String): Boolean {
         return usuarios.any { it.email == email }
     }

@@ -2,11 +2,14 @@ package repository
 
 import model.Evento
 import model.Asistencia
+import model.Recomendacion
+import model.TipoEntrada
 import java.util.UUID
 
 class EventoRepositoryImpl : IEventoRepository {
     private val eventos = mutableListOf<Evento>()
     private val asistencias = mutableListOf<Asistencia>()
+    private val recomendaciones = mutableListOf<Recomendacion>()
 
     override fun guardar(evento: Evento): Evento {
         val eventoConId = if (evento.id.isEmpty()) {
