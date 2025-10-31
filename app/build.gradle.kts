@@ -36,10 +36,28 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.AppKt"
+    // Por defecto usa la CLI, pero puedes cambiarlo a MainSwingKt para GUI
+    mainClass = "org.example.gui.MainSwingKt"
+    // Para usar CLI, comenta la línea anterior y descomenta esta:
+    // mainClass = "org.example.AppKt"
 }
 
 // Configurar para permitir entrada interactiva
 tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
+
+// Tarea para ejecutar la versión GUI
+tasks.register<JavaExec>("runGui") {
+    group = "application"
+    mainClass.set("org.example.gui.MainSwingKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+// Tarea para ejecutar la versión CLI
+tasks.register<JavaExec>("runCli") {
+    group = "application"
+    mainClass.set("org.example.AppKt")
+    classpath = sourceSets["main"].runtimeClasspath
     standardInput = System.`in`
 }
