@@ -28,7 +28,6 @@ class LoginFrame(
         setLocationRelativeTo(null)
         layout = BorderLayout()
 
-        // Título
         val titleLabel = JLabel("Buscador de Eventos Locales", SwingConstants.CENTER)
         titleLabel.font = Font("Arial", Font.BOLD, 18)
         titleLabel.border = BorderFactory.createEmptyBorder(10, 10, 10, 10)
@@ -43,7 +42,6 @@ class LoginFrame(
         gbc.insets = Insets(5, 5, 5, 5)
         gbc.fill = GridBagConstraints.HORIZONTAL
 
-        // Email
         gbc.gridx = 0
         gbc.gridy = 0
         loginPanel.add(JLabel("Email:"), gbc)
@@ -52,7 +50,6 @@ class LoginFrame(
         gbc.gridy = 0
         loginPanel.add(emailField, gbc)
 
-        // Botón Login
         gbc.gridx = 0
         gbc.gridy = 1
         gbc.gridwidth = 2
@@ -60,7 +57,6 @@ class LoginFrame(
         loginButton.addActionListener { handleLogin() }
         loginPanel.add(loginButton, gbc)
 
-        // Link a Registro
         gbc.gridy = 2
         val registerLink = JButton("¿No tienes cuenta? Regístrate")
         registerLink.isBorderPainted = false
@@ -81,7 +77,6 @@ class LoginFrame(
         gbc.insets = Insets(5, 5, 5, 5)
         gbc.fill = GridBagConstraints.HORIZONTAL
 
-        // Nombre
         gbc.gridx = 0
         gbc.gridy = 0
         registerPanel.add(JLabel("Nombre:"), gbc)
@@ -90,7 +85,6 @@ class LoginFrame(
         gbc.gridy = 0
         registerPanel.add(nombreField, gbc)
 
-        // Email
         gbc.gridx = 0
         gbc.gridy = 1
         registerPanel.add(JLabel("Email:"), gbc)
@@ -100,7 +94,6 @@ class LoginFrame(
         gbc.gridy = 1
         registerPanel.add(regEmailField, gbc)
 
-        // Botón Registrar
         gbc.gridx = 0
         gbc.gridy = 2
         gbc.gridwidth = 2
@@ -110,7 +103,6 @@ class LoginFrame(
         }
         registerPanel.add(registerButton, gbc)
 
-        // Link a Login
         gbc.gridy = 3
         val loginLink = JButton("¿Ya tienes cuenta? Inicia sesión")
         loginLink.isBorderPainted = false

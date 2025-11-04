@@ -18,5 +18,15 @@
     "id": "7f02d6c5-43d4-4faa-95dc-b0753445eeb7",
     "nombre": "juan",
     "email": "papaleta@gmail.com"
+  },
+  {
+    "id": "98330cd3-d71d-45d4-b797-8b9674eaaddb",
+    "nombre": "dona",
+    "email": "dona@gmail.com"
+  },
+  {
+    "id": "42acee81-0e5b-4bf9-b825-4994e6bedea8",
+    "nombre": "lauti",
+    "email": "lauti@gmail.com"
   }
 ]
