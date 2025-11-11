@@ -1,53 +1,31 @@
 package repository
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import model.Usuario
-import java.io.File
-import java.io.FileReader
-import java.io.FileWriter
 import java.util.UUID
 
+/**
+ * Implementación de repositorio de usuarios usando JSON.
+ * Hereda de BaseRepository para reutilizar funcionalidad común.
+ * Demuestra Herencia y Polimorfismo.
+ */
 class UsuarioRepositoryJson(
-    private val usuariosFile: String = "usuarios.json"
-) : IUsuarioRepository {
+    private val nombreArchivo: String = "usuarios.json"
+) : BaseRepository<Usuario>(), IUsuarioRepository {
 
-    private val gson: Gson = GsonBuilder()
-        .setPrettyPrinting()
-        .create()
-
+    // Encapsulamiento: datos privados
     private var usuarios: MutableList<Usuario>
 
     init {
-        usuarios = cargarUsuarios()
+        usuarios = cargarDatos()
     }
 
-    private fun cargarUsuarios(): MutableList<Usuario> {
-        val file = File(usuariosFile)
-        if (!file.exists()) {
-            return mutableListOf()
-        }
+    // Polimorfismo: implementación específica del método abstracto
+    override fun getNombreArchivo(): String = nombreArchivo
 
-        return try {
-            FileReader(file).use { reader ->
-                val type = object : TypeToken<MutableList<Usuario>>() {}.type
-                gson.fromJson(reader, type) ?: mutableListOf()
-            }
-        } catch (e: Exception) {
-            println("Error al cargar usuarios: ${e.message}")
-            mutableListOf()
-        }
-    }
-
-    private fun guardarUsuarios() {
-        try {
-            FileWriter(usuariosFile).use { writer ->
-                gson.toJson(usuarios, writer)
-            }
-        } catch (e: Exception) {
-            println("Error al guardar usuarios: ${e.message}")
-        }
+    // Polimorfismo: implementación específica del TypeToken
+    override fun getTypeToken(): TypeToken<MutableList<Usuario>> {
+        return object : TypeToken<MutableList<Usuario>>() {}
     }
 
     override fun guardar(usuario: Usuario): Usuario {
@@ -57,7 +35,7 @@ class UsuarioRepositoryJson(
             usuario
         }
         usuarios.add(usuarioConId)
-        guardarUsuarios()
+        guardarDatos(usuarios)
         return usuarioConId
     }
 

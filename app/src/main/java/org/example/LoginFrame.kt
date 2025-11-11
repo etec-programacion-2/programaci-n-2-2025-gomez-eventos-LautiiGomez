@@ -9,7 +9,7 @@ import javax.swing.*
 class LoginFrame(
     private val usuarioService: IUsuarioService,
     private val eventoService: IEventoService
-) : JFrame("Buscador de Eventos - Login") {
+) : JFrame("Finder - Login") {
 
     private val emailField = JTextField(20)
     private val nombreField = JTextField(20)
@@ -28,12 +28,18 @@ class LoginFrame(
         setLocationRelativeTo(null)
         layout = BorderLayout()
 
-        val titleLabel = JLabel("Buscador de Eventos Locales", SwingConstants.CENTER)
+        val titleLabel = JLabel("Finder", SwingConstants.CENTER)
         titleLabel.font = Font("Arial", Font.BOLD, 18)
         titleLabel.border = BorderFactory.createEmptyBorder(10, 10, 10, 10)
         add(titleLabel, BorderLayout.NORTH)
 
         add(mainPanel, BorderLayout.CENTER)
+
+        val imageIcon = ImageIcon("../../../resources/Finder.png") // Ruta relativa a la imagen
+
+        // Crear un JLabel con la imagen
+        val logoLabel = JLabel(imageIcon)
+        add(logoLabel, BorderLayout.SOUTH)
     }
 
     private fun createLoginPanel() {

@@ -10,7 +10,7 @@ class MainFrame(
     private val usuario: Usuario,
     private val usuarioService: IUsuarioService,
     private val eventoService: IEventoService
-) : JFrame("Buscador de Eventos - ${usuario.nombre}") {
+) : JFrame("Finder - ${usuario.nombre}") {
 
     private val tabbedPane = JTabbedPane()
 
@@ -28,6 +28,7 @@ class MainFrame(
         val topPanel = JPanel(FlowLayout(FlowLayout.RIGHT))
         topPanel.border = BorderFactory.createEmptyBorder(5, 10, 5, 10)
         topPanel.add(JLabel("Usuario: ${usuario.nombre} (${usuario.email})"))
+        topPanel.setBackground(Color.WHITE)
 
         val logoutButton = JButton("Cerrar Sesión")
         logoutButton.addActionListener { cerrarSesion() }
