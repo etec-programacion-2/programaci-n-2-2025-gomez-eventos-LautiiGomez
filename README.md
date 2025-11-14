@@ -23,19 +23,13 @@ Aplicación completa en Kotlin para gestionar eventos locales con interfaces CLI
 
 ## Requisitos Previos
 
-Antes de ejecutar la aplicación, asegúrate de tener instalado:
+Antes de ejecutar la aplicación, asegurate de tener instalado:
 
 ### 1. Java Development Kit (JDK)
-- **Versión requerida**: JDK 21 o superior
-- **Descarga**: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) o [OpenJDK](https://adoptium.net/)
-- **Verificar instalación**:
-  ```bash
-  java -version
-  ```
-  Deberías ver algo como: `java version "21.0.x"`
+- **Versión requerida**: JDK 17 o superior
 
 ### 2. Gradle (Opcional)
-El proyecto incluye Gradle Wrapper, por lo que NO necesitas instalar Gradle manualmente. Los scripts `gradlew` (Linux/Mac) y `gradlew.bat` (Windows) se encargan de todo.
+El proyecto incluye Gradle Wrapper, por lo que no es necesario instalar Gradle manualmente. Los scripts `gradlew` (Linux/Mac) y `gradlew.bat` (Windows) se encargan de todo.
 
 ### 3. Git (Para clonar el repositorio)
 - **Descarga**: [Git](https://git-scm.com/downloads)
@@ -51,22 +45,16 @@ El proyecto incluye Gradle Wrapper, por lo que NO necesitas instalar Gradle manu
 Abre una terminal y ejecuta:
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
-```
-
-Si descargaste un archivo ZIP, descomprímelo y navega a la carpeta del proyecto:
-
-```bash
-cd ruta/a/tu-proyecto
+git clone https://github.com/etec-programacion-2/programaci-n-2-2025-gomez-eventos-LautiiGomez.git
+cd programaci-n-2-2025-gomez-eventos-LautiiGomez
 ```
 
 ### Paso 2: Verificar Estructura del Proyecto
 
-Asegúrate de que la estructura sea similar a:
+Asegurate de que la estructura sea similar a:
 
 ```
-proyecto/
+programaci-n-2-2025-gomez-eventos-LautiiGomez/
 ├── app/
 │   ├── src/
 │   │   └── main/
@@ -80,9 +68,9 @@ proyecto/
 └── README.md
 ```
 
-### Paso 3: Dar Permisos de Ejecución (Linux/Mac)
+### Paso 3: Dar Permisos de Ejecución (Linux)
 
-En Linux o macOS, dale permisos de ejecución al script de Gradle:
+En Linux, hay que darle permisos de ejecución al script de Gradle:
 
 ```bash
 chmod +x gradlew
@@ -92,7 +80,7 @@ chmod +x gradlew
 
 Antes de ejecutar, compila el proyecto para verificar que todo esté en orden:
 
-### Linux/Mac:
+### Linux:
 ```bash
 ./gradlew clean
 ./gradlew build
@@ -104,11 +92,9 @@ gradlew.bat clean
 gradlew.bat build
 ```
 
-**Salida esperada**: Deberías ver `BUILD SUCCESSFUL` al final.
-
 Si hay errores:
-- Verifica que Java 21 esté instalado correctamente
-- Asegúrate de estar en la carpeta raíz del proyecto
+- Verifica que Java 17 esté instalado correctamente
+- Asegurate de estar en la carpeta raíz del proyecto
 - Revisa que no haya problemas de conexión (Gradle descarga dependencias)
 
 ## Ejecución de la Aplicación
@@ -119,14 +105,14 @@ El proyecto ofrece dos interfaces: **GUI (Interfaz Gráfica)** y **CLI (Línea d
 
 Esta es la forma más visual y amigable de usar la aplicación.
 
-#### Linux/Mac:
+#### Linux:
 ```bash
 ./gradlew run
 ```
 
-o específicamente:
+Otra herramienta muy útil de ejecución que usé a lo largo de todo el proyecto es la siguiente:
 ```bash
-./gradlew runGui
+./gradlew run --no-configuration-cache
 ```
 
 #### Windows:
@@ -134,18 +120,16 @@ o específicamente:
 gradlew.bat run
 ```
 
-o específicamente:
+O también:
 ```cmd
-gradlew.bat runGui
+gradlew.bat run --no-configuration-cache
 ```
-
-**Resultado**: Se abrirá una ventana gráfica con la pantalla de login.
 
 ### Opción 2: Interfaz de Línea de Comandos (CLI)
 
 Para usar la versión de consola:
 
-#### Linux/Mac:
+#### Linux:
 ```bash
 ./gradlew runCli --console=plain
 ```
@@ -154,8 +138,6 @@ Para usar la versión de consola:
 ```cmd
 gradlew.bat runCli --console=plain
 ```
-
-**Resultado**: Verás un menú interactivo en la terminal.
 
 ## Archivos de Datos
 
@@ -170,12 +152,44 @@ Estos archivos se crean automáticamente la primera vez que ejecutas la aplicaci
 
 ## Uso de la Aplicación
 
-### Primera Vez
+- **Primera Vez: Creando tu Cuenta**
+La primera vez que uses la aplicación, vas a necesitar crear una cuenta. Cuando veas la ventana de inicio, vas a ver dos opciones: "Iniciar Sesión" y un enlace que dice "¿No tienes cuenta? Regístrate". Hacé clic en el enlace de registro.
+Te va a aparecer un formulario muy sencillo con dos campos. En el primer campo escribí tu nombre completo, por ejemplo "Lautaro Gómez". En el segundo campo escribí tu dirección de email, por ejemplo "lautaro.gomez@email.com". Este email va a ser tu identificador único en el sistema, así que asegurate de escribirlo correctamente. Una vez completados ambos campos, hacé clic en el botón "Registrarse".
+Si todo salió bien, vas a ver un mensaje de confirmación y automáticamente entrarás a la aplicación. 
+- **Iniciando Sesión**
+Cuando vuelvas a usar la aplicación después de cerrarla, tu cuenta seguirá existiendo. Para ingresar, simplemente escribí tu email en el campo correspondiente y hacé clic en "Iniciar Sesión". El sistema recordará tu información y te dará acceso inmediato.
+Conociendo la Ventana Principal
+Una vez dentro de la aplicación, vas a ver una ventana con tu nombre y email en la parte superior derecha, junto a un botón de "Cerrar Sesión". En el área principal vas a encontrar cuatro pestañas, cada una con una función específica. Podés hacer clic en cualquiera de estas pestañas para acceder a diferentes funcionalidades.
+- **Creando tu Primer Evento**
+Para crear un evento, asegurate de estar en la primera pestaña que dice "Crear Evento". Vas a ver un formulario con varios campos que debes completar.
+En el campo "Nombre del evento", escribí un título atractivo y descriptivo, por ejemplo "Fiesta de fin de año". En el área de "Descripción", agregá detalles de tu evento. Podés escribir varios párrafos explicando qué incluye el evento, qué pueden esperar los asistentes, y cualquier información relevante.
+En "Fecha y hora" tenés que ser muy cuidadoso con el formato. Podés escribir la fecha así: "15/12/2024 18:30” significa el 15 de diciembre de 2024 a las 6:30 de la tarde.
+En "Ubicación" escribí el lugar donde se realizará el evento, siendo lo más específico posible. Por ejemplo: "Colegio ETEC" o "Escuela Técnica de la Universidad de Mendoza, Perito Moreno 2397, Godoy Cruz, Mendoza".
+En "Categoría" podés escribir lo que quieras para clasificar tu evento. Algunos ejemplos: "Música", "Deportes", "Gastronomía", "Arte", "Tecnología", "Familiar", etc.
+Para el tipo de entrada, vas a ver un menú desplegable con dos opciones. Si seleccionás "Gratis", el evento será de entrada gratuita. Si seleccionás "Pago", va a aparecer un campo adicional donde debes escribir el precio numérico. Por ejemplo, si la entrada cuesta 5000 pesos, escribí "5000" (sin puntos ni comas).
+Una vez completados todos los campos, hacé clic en el botón "Crear Evento". Vas a ver un mensaje de confirmación indicando que tu evento fue creado exitosamente. Si querés crear otro evento inmediatamente, podés hacer clic en el botón "Limpiar" para vaciar el formulario y empezar de nuevo.
+- **Viendo Todos los Eventos Disponibles**
+Para ver qué eventos hay disponibles, haz clic en la segunda pestaña "Todos los Eventos". Verás una tabla con todos los eventos que existen en el sistema, tanto los que tú creaste como los creados por otros usuarios. La tabla muestra información resumida de cada evento: su nombre, cuándo será, dónde, su categoría, si es gratis o cuánto cuesta, y su calificación promedio si tiene recomendaciones.
+Para ver más detalles de un evento específico, haz clic en cualquier fila de la tabla para seleccionarla (se pondrá de color azul), y luego haz clic en el botón "Ver Detalles" ubicado abajo. Aparecerá una ventana emergente mostrando toda la información completa del evento, incluyendo su descripción detallada y el promedio de calificaciones que ha recibido.
+Si quieres asistir a un evento, selecciónalo en la tabla y haz clic en el botón "Confirmar Asistencia". El sistema guardará tu confirmación. Ten en cuenta que solo puedes confirmar una vez por evento; si intentas confirmar nuevamente, te avisará que ya lo hiciste previamente.
+Para calificar un evento, selecciónalo y haz clic en el botón "Recomendar". Aparecerá una ventana preguntándote cuántas estrellas le das al evento, desde 1 estrella (no te gustó) hasta 5 estrellas (excelente). Selecciona tu calificación y confirma. Tu opinión se sumará al promedio general del evento que otros usuarios verán.
+Si se agregaron eventos nuevos mientras tenías la aplicación abierta, puedes hacer clic en el botón "Refrescar" para actualizar la tabla con la información más reciente.
+- **Buscando Eventos Específicos**
+Cuando hay muchos eventos disponibles, puede ser útil filtrarlos. La tercera pestaña "Buscar Eventos" te permite hacer esto de varias formas.
+Para buscar eventos en una ubicación específica, escribí el nombre de la ciudad o lugar en el campo "Ubicación". No necesitás escribir la ubicación completa exacta; el sistema buscará coincidencias parciales. Por ejemplo, si escribís "Mendoza", encontrará todos los eventos que tengan "Mendoza" en su ubicación. Después hacé clic en el botón "Buscar" que está al lado del campo.
+Para buscar eventos por precio, escribe en el campo "Precio máximo" cuánto estás dispuesto a pagar como máximo. Por ejemplo, si escribís "3000", el sistema te mostrará todos los eventos que cuesten 3000 pesos o menos, además de los eventos gratuitos. Hacé clic en el botón "Buscar" correspondiente.
+Si solo te interesan los eventos gratuitos, simplemente hacé clic en el botón "Solo Gratuitos". La tabla se actualizará mostrando únicamente eventos con entrada gratis.
+Si querés volver a ver todos los eventos sin filtros, hacé clic en el botón "Mostrar Todos".
+Los eventos encontrados se mostrarán en la tabla igual que en la pestaña de todos los eventos, y podés interactuar con ellos de la misma manera: ver detalles o confirmar asistencia.
+- **Gestionando tus Propios Eventos**
+La cuarta pestaña “Mis Eventos" te muestra únicamente los eventos que has creado. Esta es tu área personal de gestión.
+La tabla muestra todos tus eventos con su información básica. Para ver los detalles completos de alguno, seleccionalo y hacé clic en "Ver Detalles".
+Si necesitás modificar algún evento que creaste, selecciónalo en la tabla y hacé clic en el botón "Editar Evento". Se abrirá una ventana nueva con un formulario similar al de creación, pero ya completado con la información actual del evento. Podés cambiar el nombre, la descripción, la fecha, la ubicación y la categoría.
+Importante: el tipo de entrada (gratis o pago) y el precio NO se pueden modificar una vez creado el evento. Si necesitás cambiar estos datos, tendrías que crear un evento nuevo.
+Para guardar tus cambios, hacé clic en el botón "Guardar" en la ventana de edición. Si cambiás de opinión y no querés guardar los cambios, hacé clic en "Cancelar". Una vez guardados los cambios, vas a ver un mensaje de confirmación y la tabla se actualizará automáticamente mostrando la información nueva.
+- **Cerrando Sesión**
+Cuando termines de usar la aplicación, es recomendable cerrar sesión. Hacé clic en el botón "Cerrar Sesión" ubicado en la esquina superior derecha de la ventana. El sistema te preguntará si estás seguro. Si confirmás, volverás a la pantalla de inicio de sesión. Toda tu información quedará guardada de forma segura y podrás volver a acceder cuando quieras usando tu email.
 
-1. Ejecuta la aplicación (GUI o CLI)
-2. Selecciona "Registrarse" o la opción de registro
-3. Ingresa tu nombre y email
-4. ¡Listo! Ya puedes usar todas las funcionalidades
 
 ### Funcionalidades Disponibles
 
@@ -204,7 +218,7 @@ Menú numerado del 1 al 8:
 ## Solución de Problemas
 
 ### Error: "Java version incompatible"
-**Solución**: Instala JDK 21 o superior.
+**Solución**: Instala JDK 17 o superior.
 
 ### Error: "Permission denied" (Linux/Mac)
 **Solución**: Ejecuta `chmod +x gradlew`
@@ -215,74 +229,14 @@ Menú numerado del 1 al 8:
 2. Ejecuta `./gradlew build`
 3. Intenta ejecutar nuevamente
 
-### La ventana GUI no aparece
-**Solución**:
-1. Verifica que estés usando el comando correcto: `./gradlew run` o `./gradlew runGui`
-2. Asegúrate de tener un entorno gráfico (no funciona en servidores sin GUI)
-
-### Error: "Address already in use"
-**Solución**: Ya hay una instancia de la aplicación corriendo. Ciérrala antes de ejecutar otra.
-
-### Los datos no se guardan
-**Solución**: Verifica que tienes permisos de escritura en la carpeta del proyecto.
-
-## Documentación Adicional
-
-- **SOLID.md**: Explicación de cómo el proyecto implementa los principios SOLID
-- **Instructivo de usuario**: Guía completa para usuarios no técnicos (ver sección anterior de este README)
-
-## Arquitectura del Proyecto
-
-El proyecto sigue una arquitectura en capas:
-
-```
-Presentación (CLI/GUI)
-        ↓
-Servicios (Lógica de Negocio)
-        ↓
-Repositorios (Abstracción)
-        ↓
-Persistencia (JSON)
-```
-
-### Tecnologías Utilizadas
+### Tecnologías Usadas
 
 - **Lenguaje**: Kotlin 2.2.10
-- **JDK**: Java 21
+- **JDK**: Java 17
 - **Build Tool**: Gradle con Kotlin DSL
 - **Serialización**: Gson 2.10.1
 - **GUI**: Java Swing
 - **Testing**: JUnit Jupiter 5.12.1
 
-### Patrones de Diseño Implementados
-
-- Patrón Repositorio
-- Inversión de Dependencias (DIP)
-- Inyección de Dependencias
-- Modelo-Vista-Controlador (MVC)
-- Factory (RepositorioConfig)
-- Herencia (BaseRepository)
-
-## Contribución
-
-Si deseas contribuir al proyecto:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/NuevaFuncionalidad`)
-3. Commit tus cambios (`git commit -am 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/NuevaFuncionalidad`)
-5. Crea un Pull Request
----
-
-## Checklist de Verificación
-
-Antes de ejecutar, verifica:
-
-- [ ] JDK 21 instalado (`java -version`)
-- [ ] Proyecto clonado o descargado
-- [ ] Terminal abierta en la carpeta del proyecto
-- [ ] Permisos de ejecución dados a `gradlew` (Linux/Mac)
-- [ ] Compilación exitosa (`./gradlew build`)
-- [ ] Comando de ejecución correcto según la interfaz deseada
 
 ¡Disfruta usando el Buscador de Eventos Locales! 
